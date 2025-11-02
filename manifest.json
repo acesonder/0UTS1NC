@@ -1,0 +1,46 @@
+{
+  "name": "OutSinc - Homeless Outreach Services",
+  "short_name": "OutSinc",
+  "description": "Comprehensive web application for homeless outreach services",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2c3e50",
+  "theme_color": "#2c3e50",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["social", "health", "utilities"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Resources",
+      "short_name": "Resources",
+      "description": "Find shelters, food, and services",
+      "url": "/#resources"
+    },
+    {
+      "name": "Map",
+      "short_name": "Map",
+      "description": "Navigate to nearby services",
+      "url": "/#map"
+    },
+    {
+      "name": "Emergency",
+      "short_name": "Emergency",
+      "description": "Access emergency contacts",
+      "url": "/#communication"
+    }
+  ]
+}
