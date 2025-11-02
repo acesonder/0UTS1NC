@@ -43,7 +43,12 @@ self.addEventListener('fetch', event => {
 
         return fetch(fetchRequest).then(response => {
           // Check if valid response
-          if (!response || response.status !== 200 || response.type !== 'basic') {
+          if (!response || response.status !== 200) {
+            return response;
+          }
+          
+          // Only cache basic and cors responses, not opaque
+          if (response.type !== 'basic' && response.type !== 'cors') {
             return response;
           }
 

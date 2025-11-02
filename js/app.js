@@ -8,6 +8,7 @@
         initOfflineDetection();
         initServiceWorker();
         checkUserRole();
+        initAllTabs();
     });
 
     // Navigation
@@ -141,7 +142,7 @@
     };
 
     // Initialize tabs
-    document.addEventListener('DOMContentLoaded', function() {
+    function initAllTabs() {
         const allTabButtons = document.querySelectorAll('.tab-btn');
         allTabButtons.forEach(btn => {
             btn.addEventListener('click', function() {
@@ -166,7 +167,7 @@
                 });
             });
         });
-    });
+    }
 
     // Utility: Save data to localStorage
     window.saveData = function(key, data) {

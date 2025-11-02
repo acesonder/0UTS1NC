@@ -194,7 +194,7 @@
     }
 
     // Get directions function (will integrate with map module)
-    window.getDirections = function(address) {
+    function getDirectionsFromResources(address) {
         // Switch to map view
         const mapLink = document.querySelector('[data-view="map"]');
         if (mapLink) {
@@ -207,9 +207,16 @@
             searchInput.value = address;
         }
 
-        // Trigger directions (would normally call actual map API)
-        alert(`Getting directions to: ${address}\n\nIn a full implementation, this would open navigation to the location.`);
-    };
+        // Call the map module's getDirections if available
+        if (window.MapModule && window.MapModule.getDirections) {
+            window.MapModule.getDirections(address);
+        } else {
+            alert(`Getting directions to: ${address}\n\nIn a full implementation, this would open navigation to the location.`);
+        }
+    }
+    
+    // Expose as global for use in HTML onclick
+    window.getDirections = getDirectionsFromResources;
 
     // Export for use in other modules
     window.ResourcesModule = {
