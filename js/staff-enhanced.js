@@ -279,7 +279,12 @@
     }
 
     function applyAdvancedFilters() {
-        // This would filter based on selected criteria
+        // TODO: Implement advanced filtering logic
+        // This should filter clients based on:
+        // - Risk level checkboxes
+        // - Location multi-select
+        // - Needs checkboxes
+        // - Last contact date range
         alert('Advanced filters applied. Results would be displayed based on selected criteria.');
         closeModal();
     }

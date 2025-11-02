@@ -42,10 +42,21 @@
         if (form) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
+                
+                // Validate form elements exist
+                const serviceEl = document.getElementById('referral-service');
+                const reasonEl = document.getElementById('referral-reason');
+                const urgencyEl = document.getElementById('referral-urgency');
+                
+                if (!serviceEl || !reasonEl || !urgencyEl) {
+                    alert('Form error: Required fields are missing.');
+                    return;
+                }
+                
                 const referralData = {
-                    service: document.getElementById('referral-service').value,
-                    reason: document.getElementById('referral-reason').value,
-                    urgency: document.getElementById('referral-urgency').value,
+                    service: serviceEl.value,
+                    reason: reasonEl.value,
+                    urgency: urgencyEl.value,
                     date: new Date(),
                     status: 'Pending'
                 };
