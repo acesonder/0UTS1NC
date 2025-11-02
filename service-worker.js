@@ -1,5 +1,5 @@
 // Service Worker for offline functionality
-const CACHE_NAME = 'outsinc-v1';
+const CACHE_NAME = 'outsinc-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -11,7 +11,9 @@ const urlsToCache = [
   '/js/map.js',
   '/js/staff.js',
   '/js/admin.js',
-  '/manifest.json'
+  '/manifest.json',
+  '/assets/icon-192.png',
+  '/assets/icon-512.png'
 ];
 
 // Install event - cache resources
