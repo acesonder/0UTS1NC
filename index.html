@@ -277,7 +277,18 @@
 
             <!-- Staff Dashboard View -->
             <section id="staff-view" class="view staff-only">
-                <h2>Staff Dashboard</h2>
+                <h2><i class="fas fa-user-tie"></i> Staff Dashboard</h2>
+                
+                <!-- Quick Action Buttons -->
+                <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+                    <button class="btn-secondary" onclick="openShiftManagement()">
+                        <i class="fas fa-clock"></i> Shift Management
+                    </button>
+                    <button class="btn-secondary" onclick="openIncidentReporting()">
+                        <i class="fas fa-exclamation-triangle"></i> Report Incident
+                    </button>
+                </div>
+                
                 <div class="dashboard-stats">
                     <div class="stat-card">
                         <h3>Today's Check-ins</h3>
@@ -442,7 +453,9 @@
     <script src="js/profile.js"></script>
     <script src="js/map.js"></script>
     <script src="js/staff.js"></script>
+    <script src="js/staff-enhanced.js"></script>
     <script src="js/admin.js"></script>
+    <script src="js/admin-enhanced.js"></script>
     <script src="js/services.js"></script>
 </body>
 </html>
