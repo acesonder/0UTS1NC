@@ -14,6 +14,17 @@ A comprehensive web-based application designed for homeless outreach organizatio
 - Filter by resource type (shelter, food, hygiene, medical)
 - Get directions to any resource
 
+#### 🎯 Services Hub (NEW)
+- **Self-Referral System**: Request referrals to services without waiting for case worker
+- **Document Scanner**: Scan and upload documents using device camera
+- **Job Board**: Browse local jobs, build resume, schedule interviews
+- **Legal Aid Connector**: Find legal services, schedule consultations, upload documents
+- **Health Tracker**: Log medical visits, medication reminders, health screening data
+- **Education Portal**: Access GED programs, job skills training, free courses
+- **Transportation Assistance**: Request bus passes, schedule rides, plan routes
+- **Digital Wallet**: Store vouchers, tickets, and service access points
+- **Service Feedback**: Rate and review services to help improve quality
+
 #### 💬 Communication Hub
 - Direct messaging with case workers
 - Appointment scheduling and management
@@ -34,18 +45,84 @@ A comprehensive web-based application designed for homeless outreach organizatio
 - Operating hours display
 - Offline map capability
 
+#### 🎨 Customization & Accessibility
+- **Theme Customization**: Light/Dark mode with 9 accent color options
+- **Accessibility Features**: High contrast, large text, reduced motion
+- **Persistent Preferences**: All settings saved across sessions
+
 ### For Staff
 
 #### 📊 Staff Dashboard
 - Real-time statistics (check-ins, active cases, bed availability)
 - Client check-in tracking
-- Case notes and client history
 - Referral management system
 - Service utilization tracking
 
+#### 🔍 Advanced Case Management (NEW)
+- **Enhanced Case Notes**:
+  - File attachments and voice memos
+  - Priority flags (Normal, Important, Urgent, Critical)
+  - Category classification
+  - Supervisor review flags
+- **Client Search & Filters**:
+  - Quick search by name, ID, or case worker
+  - Advanced filtering by risk level, location, needs
+  - Last contact date filtering
+- **Bulk Actions**:
+  - Batch check-ins for multiple clients
+  - Mass messaging to client groups
+  - Referral assignment
+  - Data export (CSV, Excel, PDF, JSON)
+
+#### ⚙️ Staff Tools (NEW)
+- **Dashboard Customization**: Configure widgets, set personal shortcuts
+- **Shift Management**: Clock in/out, shift swaps, time-off requests
+- **Incident Reporting**: Log and manage safety, medical, and behavioral incidents
+
 ### For Administrators
 
-#### ⚙️ Admin Tools
+#### 🔧 Admin Tools
+
+##### Data Management (NEW)
+- **Import/Export**: Bulk upload/download resources, volunteers, donations via CSV/Excel
+- **Backup/Restore**: Manual and automated system backups with retention policies
+
+##### User & Access Management (NEW)
+- **User Role Management**: Fine-grained permissions, custom roles (volunteer, partner org)
+- **Audit Logs**: Complete tracking of all admin/staff actions for compliance
+- **User Suspension**: Temporarily disable users, review flagged activity
+
+##### Financial Management (NEW)
+- **Grant & Funding Tracker**: Monitor grants, expenditures, deadlines, generate reports
+- **Donation Portal**:
+  - Online donation setup (Stripe, PayPal, Square)
+  - Donor history and messaging
+  - Fundraising campaigns with progress tracking
+  - Automated tax receipts
+
+##### Volunteer & Partner Management (NEW)
+- **Volunteer Portal**:
+  - Self-service onboarding workflow
+  - Training materials management
+  - Shift signup system
+  - Background check tracking
+- **Community Partner Management**:
+  - Partner organization profiles
+  - MOU tracking and document management
+  - Contact management
+
+##### Analytics & Communication (NEW)
+- **Analytics Suite**:
+  - Custom report builder
+  - Data visualization
+  - Export to PDF/Excel
+  - Multi-source data aggregation
+- **Bulk Messaging**:
+  - Send announcements to filtered groups
+  - Multi-channel delivery (in-app, email, SMS)
+  - Scheduled messaging
+
+##### Classic Admin Features
 - Volunteer scheduling and management
 - Donation tracking (monetary and in-kind)
 - Reporting and analytics
@@ -64,10 +141,17 @@ A comprehensive web-based application designed for homeless outreach organizatio
 ## Technology Stack
 
 - **HTML5**: Semantic markup for accessibility
-- **CSS3**: Modern responsive design with CSS Grid and Flexbox
+- **CSS3**: Modern responsive design with CSS Grid, Flexbox, and 3D transforms
 - **Vanilla JavaScript**: No framework dependencies for minimal size
+- **Font Awesome 6.4**: Professional icon library (800+ icons)
 - **Progressive Web App**: Offline-first with service workers
 - **LocalStorage**: Client-side data persistence
+- **Modern UI Features**:
+  - 3D depth effects and animations
+  - Glass morphism design
+  - Dark/Light theme with 9 accent colors
+  - Responsive modal system
+  - Tab-based interfaces
 
 ## Installation
 
@@ -119,15 +203,21 @@ Simply upload all files to any web server or hosting service. The application is
 ├── manifest.json           # PWA manifest
 ├── service-worker.js       # Offline functionality
 ├── styles/
-│   └── main.css           # All application styles
+│   ├── main.css           # Core application styles
+│   ├── theme.css          # Theme customization system
+│   └── 3d-elements.css    # 3D effects and animations
 ├── js/
 │   ├── app.js             # Main app logic and navigation
+│   ├── theme.js           # Theme management
 │   ├── resources.js       # Resource locator functionality
+│   ├── services.js        # Client-facing services (33KB)
 │   ├── communication.js   # Messaging and appointments
 │   ├── profile.js         # User profile and case management
 │   ├── map.js             # Navigation and mapping
-│   ├── staff.js           # Staff dashboard
-│   └── admin.js           # Admin tools
+│   ├── staff.js           # Staff dashboard basics
+│   ├── staff-enhanced.js  # Advanced staff features (34KB)
+│   ├── admin.js           # Admin tools basics
+│   └── admin-enhanced.js  # Advanced admin features (39KB)
 ├── assets/
 │   ├── icon-192.png       # App icon 192x192
 │   └── icon-512.png       # App icon 512x512
@@ -186,16 +276,18 @@ The app automatically caches resources for offline use:
 
 ## Future Enhancements
 
-- [ ] Backend API integration for real-time data
+- [ ] Backend API integration for real-time data sync
 - [ ] Actual map integration (Google Maps, OpenStreetMap)
 - [ ] Push notifications for appointments
-- [ ] Multi-language support
+- [ ] Multi-language support system
 - [ ] Biometric authentication
-- [ ] Photo upload for documents
-- [ ] SMS/Email notifications
-- [ ] Integration with external service providers
-- [ ] Advanced reporting and analytics
-- [ ] Mobile native apps (iOS/Android)
+- [ ] SMS/Email notification integration
+- [ ] Integration with external service providers (HMIS, government databases)
+- [ ] Mobile native apps (iOS/Android using Cordova/Capacitor)
+- [ ] Advanced data analytics with machine learning
+- [ ] Outreach route planner with GPS tracking
+- [ ] Real-time incident/emergency dashboard
+- [ ] AI-powered chatbot for FAQs and triage
 
 ## Contributing
 

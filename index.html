@@ -7,6 +7,9 @@
     <meta name="theme-color" content="#2c3e50">
     <title>OutSinc - Homeless Outreach Services</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/3d-elements.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="assets/icon-192.png">
 </head>
@@ -27,12 +30,13 @@
         <!-- Navigation -->
         <nav id="main-nav" class="main-nav">
             <ul>
-                <li><a href="#resources" class="nav-link active" data-view="resources">Resources</a></li>
-                <li><a href="#communication" class="nav-link" data-view="communication">Communication</a></li>
-                <li><a href="#profile" class="nav-link" data-view="profile">My Profile</a></li>
-                <li><a href="#map" class="nav-link" data-view="map">Map</a></li>
-                <li><a href="#staff" class="nav-link staff-only" data-view="staff">Staff Dashboard</a></li>
-                <li><a href="#admin" class="nav-link admin-only" data-view="admin">Admin</a></li>
+                <li><a href="#resources" class="nav-link active" data-view="resources"><i class="fas fa-home"></i> Resources</a></li>
+                <li><a href="#communication" class="nav-link" data-view="communication"><i class="fas fa-comments"></i> Communication</a></li>
+                <li><a href="#profile" class="nav-link" data-view="profile"><i class="fas fa-user"></i> My Profile</a></li>
+                <li><a href="#map" class="nav-link" data-view="map"><i class="fas fa-map-marked-alt"></i> Map</a></li>
+                <li><a href="#services" class="nav-link" data-view="services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                <li><a href="#staff" class="nav-link staff-only" data-view="staff"><i class="fas fa-user-tie"></i> Staff Dashboard</a></li>
+                <li><a href="#admin" class="nav-link admin-only" data-view="admin"><i class="fas fa-cog"></i> Admin</a></li>
             </ul>
         </nav>
 
@@ -138,11 +142,11 @@
 
             <!-- Map View -->
             <section id="map-view" class="view">
-                <h2>Navigation & Maps</h2>
+                <h2><i class="fas fa-map-marked-alt"></i> Navigation & Maps</h2>
                 <div class="map-controls">
                     <input type="text" id="search-location" placeholder="Search for a location...">
-                    <button id="get-directions">Get Directions</button>
-                    <button id="use-location">Use My Location</button>
+                    <button id="get-directions"><i class="fas fa-directions"></i> Get Directions</button>
+                    <button id="use-location"><i class="fas fa-location-arrow"></i> Use My Location</button>
                 </div>
                 <div id="map-container" class="map-container">
                     <!-- Map will be rendered here -->
@@ -156,9 +160,135 @@
                 </div>
             </section>
 
+            <!-- New Services Hub View -->
+            <section id="services-view" class="view">
+                <h2><i class="fas fa-concierge-bell"></i> Services Hub</h2>
+                
+                <div class="services-grid">
+                    <!-- Self-Referral System -->
+                    <div class="service-card glass-effect">
+                        <div class="service-icon">
+                            <i class="fas fa-hand-pointer fa-3x"></i>
+                        </div>
+                        <h3>Self-Referral</h3>
+                        <p>Request referrals to services directly without waiting for case worker</p>
+                        <button class="btn-primary" onclick="openSelfReferral()">
+                            <i class="fas fa-plus-circle"></i> Request Referral
+                        </button>
+                    </div>
+
+                    <!-- Document Scanner -->
+                    <div class="service-card glass-effect">
+                        <div class="service-icon">
+                            <i class="fas fa-camera fa-3x"></i>
+                        </div>
+                        <h3>Document Scanner</h3>
+                        <p>Scan and upload important documents using your device camera</p>
+                        <button class="btn-primary" onclick="openDocumentScanner()">
+                            <i class="fas fa-scan"></i> Scan Document
+                        </button>
+                    </div>
+
+                    <!-- Job Board -->
+                    <div class="service-card glass-effect">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase fa-3x"></i>
+                        </div>
+                        <h3>Job Board</h3>
+                        <p>Find local jobs, build your resume, schedule interviews</p>
+                        <button class="btn-primary" onclick="openJobBoard()">
+                            <i class="fas fa-search"></i> Browse Jobs
+                        </button>
+                    </div>
+
+                    <!-- Legal Aid -->
+                    <div class="service-card glass-effect">
+                        <div class="service-icon">
+                            <i class="fas fa-gavel fa-3x"></i>
+                        </div>
+                        <h3>Legal Aid</h3>
+                        <p>Connect with legal services, schedule appointments</p>
+                        <button class="btn-primary" onclick="openLegalAid()">
+                            <i class="fas fa-balance-scale"></i> Get Legal Help
+                        </button>
+                    </div>
+
+                    <!-- Health Tracker -->
+                    <div class="service-card glass-effect">
+                        <div class="service-icon">
+                            <i class="fas fa-heartbeat fa-3x"></i>
+                        </div>
+                        <h3>Health Tracker</h3>
+                        <p>Log medical visits, medication reminders, health screening</p>
+                        <button class="btn-primary" onclick="openHealthTracker()">
+                            <i class="fas fa-notes-medical"></i> Track Health
+                        </button>
+                    </div>
+
+                    <!-- Education Portal -->
+                    <div class="service-card glass-effect">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap fa-3x"></i>
+                        </div>
+                        <h3>Education</h3>
+                        <p>Free courses, GED programs, skill-building workshops</p>
+                        <button class="btn-primary" onclick="openEducationPortal()">
+                            <i class="fas fa-book-open"></i> Learn More
+                        </button>
+                    </div>
+
+                    <!-- Transportation -->
+                    <div class="service-card glass-effect">
+                        <div class="service-icon">
+                            <i class="fas fa-bus fa-3x"></i>
+                        </div>
+                        <h3>Transportation</h3>
+                        <p>Bus pass requests, ride scheduling, route planning</p>
+                        <button class="btn-primary" onclick="openTransportation()">
+                            <i class="fas fa-route"></i> Get Transportation
+                        </button>
+                    </div>
+
+                    <!-- Digital Wallet -->
+                    <div class="service-card glass-effect">
+                        <div class="service-icon">
+                            <i class="fas fa-wallet fa-3x"></i>
+                        </div>
+                        <h3>Digital Wallet</h3>
+                        <p>Store vouchers, tickets, and points for service access</p>
+                        <button class="btn-primary" onclick="openDigitalWallet()">
+                            <i class="fas fa-credit-card"></i> View Wallet
+                        </button>
+                    </div>
+
+                    <!-- Service Feedback -->
+                    <div class="service-card glass-effect">
+                        <div class="service-icon">
+                            <i class="fas fa-star fa-3x"></i>
+                        </div>
+                        <h3>Rate Services</h3>
+                        <p>Share your experience and help improve services</p>
+                        <button class="btn-primary" onclick="openServiceFeedback()">
+                            <i class="fas fa-comment-dots"></i> Give Feedback
+                        </button>
+                    </div>
+                </div>
+            </section>
+
             <!-- Staff Dashboard View -->
             <section id="staff-view" class="view staff-only">
-                <h2>Staff Dashboard</h2>
+                <h2><i class="fas fa-user-tie"></i> Staff Dashboard</h2>
+                
+                <!-- Quick Action Buttons -->
+                <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+                    <button class="btn-secondary" onclick="openShiftManagement()">
+                        <i class="fas fa-clock"></i> Shift Management
+                    </button>
+                    <button class="btn-secondary" onclick="openIncidentReporting()">
+                        <i class="fas fa-exclamation-triangle"></i> Report Incident
+                    </button>
+                </div>
+                
                 <div class="dashboard-stats">
                     <div class="stat-card">
                         <h3>Today's Check-ins</h3>
@@ -250,14 +380,82 @@
         <div id="offline-indicator" class="offline-indicator" style="display: none;">
             <p>You are currently offline. Some features may be limited.</p>
         </div>
+
+        <!-- Theme Customization Toggle Button -->
+        <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Open theme settings">
+            <i class="fas fa-palette"></i>
+        </button>
+
+        <!-- Theme Customization Panel -->
+        <div id="theme-panel" class="theme-panel">
+            <h3 style="margin-top: 0; margin-bottom: 20px;">Theme Settings</h3>
+            
+            <div class="theme-option">
+                <h4>Display Mode</h4>
+                <label>
+                    <input type="radio" name="theme-mode" value="light" checked>
+                    <i class="fas fa-sun"></i> Light Mode
+                </label>
+                <label>
+                    <input type="radio" name="theme-mode" value="dark">
+                    <i class="fas fa-moon"></i> Dark Mode
+                </label>
+            </div>
+
+            <div class="theme-option">
+                <h4>Accent Color</h4>
+                <div class="color-picker-group">
+                    <button class="color-option active" data-color="blue" style="background: #3498db;" title="Blue"></button>
+                    <button class="color-option" data-color="green" style="background: #27ae60;" title="Green"></button>
+                    <button class="color-option" data-color="purple" style="background: #9b59b6;" title="Purple"></button>
+                    <button class="color-option" data-color="orange" style="background: #e67e22;" title="Orange"></button>
+                    <button class="color-option" data-color="red" style="background: #e74c3c;" title="Red"></button>
+                    <button class="color-option" data-color="teal" style="background: #1abc9c;" title="Teal"></button>
+                    <button class="color-option" data-color="pink" style="background: #e91e63;" title="Pink"></button>
+                    <button class="color-option" data-color="indigo" style="background: #3f51b5;" title="Indigo"></button>
+                    <button class="color-option" data-color="cyan" style="background: #00bcd4;" title="Cyan"></button>
+                </div>
+            </div>
+
+            <div class="theme-option">
+                <h4>Accessibility</h4>
+                <label>
+                    <input type="checkbox" id="high-contrast-toggle">
+                    <i class="fas fa-adjust"></i> High Contrast
+                </label>
+                <label>
+                    <input type="checkbox" id="large-text-toggle">
+                    <i class="fas fa-text-height"></i> Large Text
+                </label>
+                <label>
+                    <input type="checkbox" id="reduce-motion-toggle">
+                    <i class="fas fa-running"></i> Reduce Motion
+                </label>
+            </div>
+
+            <div class="theme-option">
+                <button class="btn-secondary" id="reset-theme" style="width: 100%;">
+                    <i class="fas fa-undo"></i> Reset to Default
+                </button>
+            </div>
+        </div>
+
+        <!-- Accessibility Quick Access Button -->
+        <button id="accessibility-btn" class="accessibility-btn" aria-label="Accessibility options" title="Accessibility options">
+            <i class="fas fa-universal-access"></i>
+        </button>
     </div>
 
     <script src="js/app.js"></script>
+    <script src="js/theme.js"></script>
     <script src="js/resources.js"></script>
     <script src="js/communication.js"></script>
     <script src="js/profile.js"></script>
     <script src="js/map.js"></script>
     <script src="js/staff.js"></script>
+    <script src="js/staff-enhanced.js"></script>
     <script src="js/admin.js"></script>
+    <script src="js/admin-enhanced.js"></script>
+    <script src="js/services.js"></script>
 </body>
 </html>

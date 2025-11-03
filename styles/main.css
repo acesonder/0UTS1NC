@@ -655,3 +655,58 @@ body {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.service-card {
+    background: var(--card-background);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+    color: var(--secondary-color);
+    margin-bottom: 16px;
+}
+
+.service-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--primary-color);
+}
+
+.service-card p {
+    color: var(--text-color);
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.service-card .btn-primary {
+    width: 100%;
+}
+
+/* Icon enhancements */
+.fas, .far, .fab {
+    margin-right: 8px;
+}
+
+nav .fas {
+    width: 20px;
+    text-align: center;
+}
+
