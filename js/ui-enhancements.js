@@ -737,4 +737,181 @@
         });
     });
 
+    // ==========================================
+    // IMAGE GALLERY WITH MODAL VIEWER
+    // ==========================================
+    function initImageGallery() {
+        window.openImageGallery = function(images, startIndex = 0) {
+            let currentIndex = startIndex;
+            
+            const modal = document.createElement('div');
+            modal.className = 'image-modal active';
+            modal.innerHTML = `
+                <button class="image-nav prev"><i class="fas fa-chevron-left"></i></button>
+                <img src="${images[currentIndex]}" alt="Gallery Image">
+                <button class="image-nav next"><i class="fas fa-chevron-right"></i></button>
+                <div class="image-modal-controls">
+                    <button class="image-modal-btn" id="download-image"><i class="fas fa-download"></i></button>
+                    <button class="image-modal-btn" id="close-gallery"><i class="fas fa-times"></i></button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            const img = modal.querySelector('img');
+            const prevBtn = modal.querySelector('.prev');
+            const nextBtn = modal.querySelector('.next');
+            
+            function updateImage() {
+                img.style.animation = 'none';
+                setTimeout(() => {
+                    img.src = images[currentIndex];
+                    img.style.animation = 'zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                }, 10);
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateImage();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateImage();
+            });
+            
+            modal.querySelector('#close-gallery').addEventListener('click', () => {
+                modal.classList.remove('active');
+                setTimeout(() => modal.remove(), 300);
+            });
+            
+            modal.querySelector('#download-image').addEventListener('click', () => {
+                const link = document.createElement('a');
+                link.href = images[currentIndex];
+                link.download = 'image.jpg';
+                link.click();
+            });
+            
+            // Close on background click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    setTimeout(() => modal.remove(), 300);
+                }
+            });
+            
+            // Keyboard navigation
+            const keyHandler = (e) => {
+                if (e.key === 'ArrowLeft') prevBtn.click();
+                if (e.key === 'ArrowRight') nextBtn.click();
+                if (e.key === 'Escape') modal.querySelector('#close-gallery').click();
+            };
+            document.addEventListener('keydown', keyHandler);
+            
+            modal.addEventListener('remove', () => {
+                document.removeEventListener('keydown', keyHandler);
+            });
+        };
+        
+        // Auto-initialize galleries
+        document.querySelectorAll('.image-gallery').forEach(gallery => {
+            const items = gallery.querySelectorAll('.gallery-item');
+            const images = Array.from(items).map(item => item.querySelector('img').src);
+            
+            items.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    window.openImageGallery(images, index);
+                });
+            });
+        });
+    }
+
+    // ==========================================
+    // DYNAMIC CHARTS RENDERER
+    // ==========================================
+    function initCharts() {
+        window.createBarChart = function(container, data) {
+            const chartHTML = data.map(item => `
+                <div class="chart-bar">
+                    <div class="chart-label">${item.label}</div>
+                    <div class="chart-bar-fill" style="width: ${item.value}%"></div>
+                    <div class="chart-value">${item.value}%</div>
+                </div>
+            `).join('');
+            
+            if (typeof container === 'string') {
+                container = document.querySelector(container);
+            }
+            
+            if (container) {
+                container.innerHTML = chartHTML;
+            }
+        };
+        
+        window.createDonutChart = function(container, data) {
+            const total = data.reduce((sum, item) => sum + item.value, 0);
+            let currentPercent = 0;
+            
+            const gradientStops = data.map(item => {
+                const percent = (item.value / total) * 100;
+                const start = currentPercent;
+                const end = currentPercent + percent;
+                currentPercent = end;
+                return `${item.color} ${start}% ${end}%`;
+            }).join(', ');
+            
+            const legendHTML = data.map(item => `
+                <div class="legend-item">
+                    <div class="legend-color" style="background: ${item.color}"></div>
+                    <span>${item.label}: ${item.value}</span>
+                </div>
+            `).join('');
+            
+            if (typeof container === 'string') {
+                container = document.querySelector(container);
+            }
+            
+            if (container) {
+                container.innerHTML = `
+                    <div class="donut-chart" style="background: conic-gradient(${gradientStops})"></div>
+                    <div class="chart-legend">${legendHTML}</div>
+                `;
+            }
+        };
+    }
+
+    // ==========================================
+    // ANIMATED LIST UTILITIES
+    // ==========================================
+    function initAnimatedLists() {
+        window.animateListAdd = function(list, item) {
+            if (typeof list === 'string') {
+                list = document.querySelector(list);
+            }
+            list.appendChild(item);
+            item.classList.add('list-item');
+        };
+        
+        window.animateListRemove = function(item) {
+            item.classList.add('removing');
+            setTimeout(() => item.remove(), 300);
+        };
+        
+        window.animateListSort = function(list) {
+            if (typeof list === 'string') {
+                list = document.querySelector(list);
+            }
+            const items = Array.from(list.children);
+            items.forEach(item => item.classList.add('sorting'));
+            setTimeout(() => {
+                items.forEach(item => item.classList.remove('sorting'));
+            }, 500);
+        };
+    }
+
+    // Initialize new features
+    initImageGallery();
+    initCharts();
+    initAnimatedLists();
+
 })();
